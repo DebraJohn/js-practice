@@ -1,0 +1,40 @@
+#container {
+  background: url('../../images/bg1.jpg');
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*.focus {
+  color: #fff;
+  background: #957af5;
+}
+#home {
+  width: 95%;
+  height: 98%;
+}
+#home .showCard {
+  display: flex;
+  justify-content: flex-start;
+}
+#home .showCard .showCardBtn {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+}
+#home .showCard .heroMenu {
+  background-color: #fff;
+  line-height: 30px;
+  height: 30px;
+  display: none;
+  justify-content: space-around;
+  transition: width 0.3s;
+  width: 100%;
+}
+#home .showCard .heroMenu .heroItem {
+  width: 25%;
+  text-align: center;
+}
+#home .showCard .heroMenu.slide {
+  display: flex;
+}

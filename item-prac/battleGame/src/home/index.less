@@ -1,0 +1,42 @@
+#container {
+  background: url('../../images/bg1.jpg');
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*.focus {
+  color: #fff;
+  background: #957af5;
+}
+
+#home {
+  width: 95%;
+  height: 98%;
+  // background: rgba(255, 255, 255, 0.6);
+  .showCard {
+    display: flex;
+    justify-content: flex-start;
+    .showCardBtn {
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+    }
+    .heroMenu {
+      background-color: #fff;
+      line-height: 30px;
+      height: 30px;
+      display: none;
+      justify-content: space-around;
+      transition: width 0.3s;
+      width: 100%;
+      .heroItem {
+        width: 25%;
+        text-align: center;
+      }
+      &.slide {
+        display: flex;
+      }
+    }
+  }
+}

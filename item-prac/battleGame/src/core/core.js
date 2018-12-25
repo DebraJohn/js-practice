@@ -12,6 +12,6 @@ const $container = $('#container');
 //   $container.append(`<div>${i.heroName}</div>`)
 // })
 
-allheroData.map(i => {
-  $container.append(`<div>id: ${i.raceId} : ${i.raceName}</div>`);
-});
+// allheroData.map(i => {
+//   $container.append(`<div>id: ${i.raceId} : ${i.raceName}</div>`);
+// });
