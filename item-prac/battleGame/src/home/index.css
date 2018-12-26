@@ -35,6 +35,26 @@
   width: 25%;
   text-align: center;
 }
-#home .showCard .heroMenu.slide {
+#home .showCard .heroMenu.show {
+  display: flex;
+}
+#home .heroDetail {
+  display: none;
+  justify-content: space-around;
+  background-color: #fff;
+  height: 100px;
+  margin-left: 30px;
+}
+#home .heroDetail .heroInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25%;
+  text-align: center;
+}
+#home .heroDetail .heroInfo:nth-child(2n) {
+  background: #d3c6ff;
+}
+#home .heroDetail.show {
   display: flex;
 }

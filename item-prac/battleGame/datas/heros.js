@@ -1,11 +1,11 @@
 const LIB = [
   {
     raceId: 10,
-    raceName: 'Woods',
+    raceName: '森林族',
     heroList: [
       {
         heroId: 100,
-        heroName: 'Woods Lord',
+        heroName: '木头酋长',
         hp: 1000,
         attck: 100,
         defend: 100,
@@ -13,7 +13,23 @@ const LIB = [
       },
       {
         heroId: 101,
-        heroName: 'Tickle Princess',
+        heroName: '小叮铃',
+        hp: 800,
+        attck: 80,
+        defend: 80,
+        cure: 50
+      },
+      {
+        heroId: 101,
+        heroName: '恶魔猎手',
+        hp: 800,
+        attck: 80,
+        defend: 80,
+        cure: 50
+      },
+      {
+        heroId: 101,
+        heroName: '屠龙骑士',
         hp: 800,
         attck: 80,
         defend: 80,
@@ -23,7 +39,7 @@ const LIB = [
   },
   {
     raceId: 20,
-    raceName: 'Fire',
+    raceName: '火焰族',
     heroList: [
       {
         heroId: 200,
@@ -37,11 +53,11 @@ const LIB = [
   },
   {
     raceId: 30,
-    raceName: 'Guardian',
+    raceName: '守卫族',
     heroList: [
       {
         heroId: 300,
-        heroName: 'angel shooter',
+        heroName: '天使射手',
         hp: 900,
         attck: 130,
         defend: 70,
@@ -51,11 +67,11 @@ const LIB = [
   },
   {
     raceId: 40,
-    raceName: 'Void',
+    raceName: '虚空族',
     heroList: [
       {
         heroId: 300,
-        heroName: 'white walker',
+        heroName: '百灵',
         hp: 1200,
         attck: 60,
         defend: 100,
