@@ -3,16 +3,16 @@
   const $heroMenu = $('.heroMenu');
   const $heroDetail = $('.heroDetail');
 
-  // 点击事件
+  // click event
   const clickEvent = {
-    // 显示卡牌列表
+    // show card list
     showCardBtnClick: function() {
       $showCardBtn.click(function() {
         $heroMenu.toggleClass('show');
         $heroDetail.toggleClass('show');
       });
     },
-    // 焦点
+    // focus
     focusClick: function(target) {
       $(`.${target}`).click(function() {
         $(this)
@@ -25,15 +25,15 @@
     }
   };
 
-  // 渲染事件
+  // render event
   const renderPage = {
-    // 页面初始化
+    // page init
     pageInit: function() {
       this.showHeroMenu();
       clickEvent.showCardBtnClick();
       clickEvent.focusClick('heroItem');
     },
-    // 卡牌目录渲染
+    // render card catalog
     showHeroMenu: function() {
       let str = '';
       allheroData.map(i => {
@@ -45,6 +45,7 @@
         .addClass('focus');
       this.showHeroDetail(woodsList.heroList);
     },
+    // render heros' detail
     showHeroDetail: function(list) {
       let str = '';
       list.map(i=> {
@@ -58,5 +59,7 @@
       $heroDetail.html(str);
     }
   };
+
+  // init
   renderPage.pageInit();
 })();

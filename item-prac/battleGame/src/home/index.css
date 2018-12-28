@@ -1,13 +1,13 @@
 #container {
-  background: url('../../images/bg1.jpg');
+  background: #191919;
   background-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 *.focus {
-  color: #fff;
-  background: #957af5;
+  color: #000;
+  background: #DDBB54;
 }
 #home {
   width: 95%;
@@ -20,7 +20,7 @@
 #home .showCard .showCardBtn {
   width: 30px;
   height: 30px;
-  background-color: #fff;
+  background-color: #DDBB54;
 }
 #home .showCard .heroMenu {
   background-color: #fff;
