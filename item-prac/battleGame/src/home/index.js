@@ -63,3 +63,6 @@
   // init
   renderPage.pageInit();
 })();
+
+
+console.log(123)
