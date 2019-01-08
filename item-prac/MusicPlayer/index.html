@@ -11,18 +11,24 @@
   <body>
     <div id="player-interface">
       <div class="container">
-        <div class="album_pic"><div class="pic_container"></div></div>
-        <div class="song_title">Highway To Hell</div>
-        <div class="singer">AC/DC</div>
+        <div class="album_pic"><img src="" alt="" /></div>
+        <div class="song_title"></div>
+        <div class="singer"></div>
         <div class="media_control">
           <div class="icon-prev"><img src="./images/prev.png" /></div>
           <div class="icon-play"><img src="./images/play.png" /></div>
           <div class="icon-next"><img src="./images/next.png" /></div>
         </div>
-        <div class="progress-bar">
-          <div class="progressing"></div>
+        <div class="progress-bar"><div class="progressing"></div></div>
+        <audio class="music-link" src="" id="music"></audio>
+        <div class="timeLine">
+          <span class="cur-time">00:00</span>
+          <span class="total-time">04:00</span>
         </div>
       </div>
     </div>
+    <script src="../../modules/jquery/jquery.js"></script>
+    <script src="./js/playList.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
