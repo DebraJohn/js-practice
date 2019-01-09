@@ -11,6 +11,6 @@ var playList = [
     duration: '268878',
     singer:'张国荣',
     albumPic: 'https://p2.music.126.net/UI_5fJZa9AHRfJ1AywjSog==/78065325577772.jpg',
-    url: 'http://m10.music.126.net/20190108192054/176764601cf95e59e3bd0e6b29892587/ymusic/6fb4/dbf4/5b4c/b1490ea35e72d0dd5d95983f86c316a6.mp3'
+    url: 'https://m10.music.126.net/20190109103602/fbf47b9d47376c64d8ecfe9e785535e7/ymusic/6fb4/dbf4/5b4c/b1490ea35e72d0dd5d95983f86c316a6.mp3'
   }
 ]
