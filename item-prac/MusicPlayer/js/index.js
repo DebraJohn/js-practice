@@ -7,10 +7,12 @@ const $musicLink = $('#music');
 const $prevBtn = $('.icon-prev');
 const $nextBtn = $('.icon-next');
 const $playBtn = $('.icon-play');
-let curRotate;
+const $dynamic = $('#dynamic');
+let curRotate = 0;
+let style = '';
 
 let playStatus = {
-  curIndex: 1,
+  curIndex: 0,
   state: 0 //0为停止播放  1为正在播放
 };
 let curSong = playList[playStatus.curIndex];
@@ -23,16 +25,21 @@ let mediaControl = {
     playStatus.state = 1;
   },
   next: function() {
-    playStatus.curIndex = Math.max(playList.length - 1, playStatus.curIndex + 1);
+    playStatus.curIndex = Math.max(
+      playList.length - 1,
+      playStatus.curIndex + 1
+    );
     playStatus.state = 1;
   },
   __play__: function() {
     playStatus.state = 1;
+    $playBtn.find('img').attr('src', './images/pause.png');
   },
   __pause__: function() {
     playStatus.state = 0;
-  },
-}
+    $playBtn.find('img').attr('src', './images/play.png');
+  }
+};
 
 function playerInit() {
   setPlayStatus(
@@ -51,14 +58,56 @@ function setPlayStatus(pic, title, singer, url) {
 }
 
 $playBtn.click(function() {
-  if(!playStatus.state) {
+  if (!playStatus.state) {
     mediaControl.__play__();
     // $musicLink[0].play();
-    $albumPic.css('transform', curRotate).addClass('spinning');
+    styles = `
+      @-webkit-keyframes spin {
+      from {
+        transform: ${curRotate};
+      }
+      to {
+        transform: rotate(${360 + curRotate}deg);
+      }
+    }`;
+    $dynamic.html(styles);
+    $albumPic.addClass('spinning');
   } else {
     mediaControl.__pause__();
     // $musicLink[0].pause();
-    curRotate = $albumPic.css('transform')
-    $albumPic.removeClass('spinning').css('transform', curRotate);
+    curRotate = eval('get' + $albumPic.css('transform'));
+    $albumPic
+      .removeClass('spinning')
+      .css('transform', `rotate(${curRotate}deg)`);
   }
 });
+
+$nextBtn.click(function() {
+  if (playList.length > playStatus.curIndex + 1) {
+    playStatus.curIndex = playStatus.curIndex + 1;
+    curSong = playList[playStatus.curIndex];
+    setPlayStatus(
+      curSong.albumPic,
+      curSong.songTitle,
+      curSong.singer,
+      curSong.url
+    );
+  }
+});
+
+function getmatrix(a, b, c, d, e, f) {
+  var aa = Math.round((180 * Math.asin(a)) / Math.PI);
+  var bb = Math.round((180 * Math.acos(b)) / Math.PI);
+  var cc = Math.round((180 * Math.asin(c)) / Math.PI);
+  var dd = Math.round((180 * Math.acos(d)) / Math.PI);
+  var deg = 0;
+  if (aa == bb || -aa == bb) {
+    deg = dd;
+  } else if (-aa + bb == 180) {
+    deg = 180 + cc;
+  } else if (aa + bb == 180) {
+    deg = 360 - cc || 360 - dd;
+  }
+  return deg >= 360 ? 0 : deg;
+  //return (aa+','+bb+','+cc+','+dd);
+}
