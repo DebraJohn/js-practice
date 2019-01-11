@@ -1,0 +1,51 @@
+.pic {
+  position: relative;
+  height: 100px;
+}
+
+.upper {
+  width: 100px;
+  height: 100px;
+  background: #eae;
+  position: absolute;
+  z-index: 1;
+}
+
+.below {
+  width: 100px;
+  height: 100px;
+  background: #aaeeee;
+  position: absolute;
+  z-index: 0;
+}
+
+.expending {
+  animation: expend 1s linear;
+}
+
+@keyframes expend {
+  from {
+    transform: scale(0);
+    border-radius: 50%;
+  }
+  to {
+    transform: scale(1);
+    // border-radius: 0;
+    border-radius: 50%;
+  }
+}
+
+.reverse {
+  animation: goSmall 1s linear;
+}
+
+@keyframes goSmall {
+  from {
+    transform: scale(1);
+    border-radius: 50%;
+  }
+  to {
+    transform: scale(0);
+    border-radius: 50%;
+  }
+}
