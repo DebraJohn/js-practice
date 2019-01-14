@@ -25,15 +25,7 @@
   height: 100%;
 }
 #player-interface .container .spinning {
-  -webkit-animation: spin 5s infinite linear;
-}
-@-webkit-keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  -webkit-animation: spin 10s infinite linear;
 }
 #player-interface .container .song_title {
   font-size: 20px;
@@ -48,6 +40,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+#player-interface .container .media_control img {
+  width: 42px;
+  height: 42px;
 }
 #player-interface .container .progress-bar {
   width: 100%;
