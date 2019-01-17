@@ -51,9 +51,9 @@
   background: #eaeaea;
 }
 #player-interface .container .progress-bar .progressing {
-  width: 5%;
+  width: 0;
   height: 100%;
-  background: #cad7fc;
+  background: #3a6efd;
 }
 #player-interface .container .music-link {
   display: none;
