@@ -4,7 +4,7 @@ var playList = [
     duration: '268027',
     singer:'张国荣',
     albumPic: 'https://p1.music.126.net/2YIpNoCzXfYgz4zIw3s0Vg==/73667279073787.jpg',
-    url: 'http://m10.music.126.net/20190108190339/bbfd65defbcec8da58ac3a9c4c660e04/ymusic/7c1c/07fd/134b/358f4b9f6b805b6b9c77df392694e366.mp3'
+    url: 'http://dl.stream.qqmusic.qq.com/C400000VvjBp11KDEj.m4a?guid=6089793665&vkey=EC42DDEDD498A47801CD524E234364BDBCBEEC2D910D12D01ABD9A76A061FC10B69657C2FD55680D2109E3621C281BEDF4889D3F75F4B5ED&uin=0&fromtag=66'
   },
   {
     songTitle: '风再起时',
