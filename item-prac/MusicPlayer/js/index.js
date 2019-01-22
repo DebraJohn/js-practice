@@ -36,13 +36,16 @@ let mediaControl = {
   switchSong: function(state) {
     // 0为上一首, 1为下一首
     if (state) {
-      if (playStatus.curIndex < playList.length) {
+      if (playStatus.curIndex < playList.length - 1) {
         playStatus.curIndex++;
+      } else {
+        playStatus.curIndex = 0;
       }
     } else {
       if (playStatus.curIndex > 0) {
         playStatus.curIndex--;
-        this.switchSong();
+      } else {
+        playStatus.curIndex = playList.length - 1;
       }
     }
     curSong = playList[playStatus.curIndex];
@@ -73,7 +76,7 @@ let mediaControl = {
     }`;
     $dynamic.html(styles);
     $albumPic.addClass('spinning');
-    $musicLink.play();
+    $musicLink[0].play();
   },
   __pause__: function() {
     playStatus.state = 0;
@@ -83,6 +86,7 @@ let mediaControl = {
     $albumPic
       .removeClass('spinning')
       .css('transform', `rotate(${curRotate}deg)`);
+    $musicLink[0].pause();
   },
   //重置播放状态
   resetPlayStatus: function() {
@@ -116,8 +120,14 @@ function progressBar(state) {
       $curTime.html(formatDurtion(currentTime));
       progressRate = (currentTime / curSong.duration) * 100;
       $progressing.css('width', `${progressRate}%`);
-      currentTime >= Math.floor(curSong.duration / 1000) * 1000 &&
+      if (currentTime >= Math.floor(curSong.duration / 1000) * 1000) {
         mediaControl.__pause__();
+        mediaControl.switchSong(1);
+      }
+      //监听是否是最后一首，如果是，播放完就暂停
+      // if (playStatus.curIndex = playList.length - 1 || currentTime >= Math.floor(curSong.duration / 1000) * 1000 ) {
+      //   mediaControl.__pause__();
+      // }
     }, 1000);
   } else {
     clearInterval(playTimer);
