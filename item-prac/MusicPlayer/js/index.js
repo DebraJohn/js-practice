@@ -116,6 +116,11 @@ let mediaControl = {
       .css('transform', `rotate(${curRotate}deg)`);
     clearInterval(playTimer);
   },
+  //拖动调整进度条
+  adjust: function (e) {
+    var bar = e.target;
+
+  }
 };
 
 function playerInit() {
@@ -202,7 +207,8 @@ $prevBtn.click(function() {
 });
 
 //添加随机播放与顺序播放切换的监听
-$palystyles.click(function() {
+$palystyles.click(function () {
+  // console.log(e.target);
   if ($randomPlay.css('display') == 'none') {
     $randomPlay.removeClass('current');
     $orderPlay.addClass('current');
