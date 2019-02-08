@@ -35,6 +35,12 @@
   display: flex;
   justify-content: center;
 }
+#player-interface .container .playstyles {
+  display: flex;
+}
+#player-interface .container .playstyles .current {
+  display: none;
+}
 #player-interface .container .media_control {
   align-self: stretch;
   display: flex;
