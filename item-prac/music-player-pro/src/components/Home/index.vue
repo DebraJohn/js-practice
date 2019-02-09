@@ -1,17 +1,21 @@
 <template>
   <div class="home" id="home">
-    <songList templateTitle = '推荐' apiType="recommend"/>
-    <songList templateTitle = '最新' apiType="newSong"/>
-    <songList templateTitle = '收藏' apiType="mySong"/>
+    <Search/>
+    <songList templateTitle="推荐" apiType="recommend"/>
+    <songList templateTitle="最新" apiType="newSong"/>
+    <songList templateTitle="收藏" apiType="mySong"/>
   </div>
 </template>
 
 <script>
 import songList from "./songList.vue";
+import Search from "../Search/Search.vue";
 
 export default {
+  name: 'Home',
   components: {
-    songList
+    songList,
+    Search
   }
 };
 </script>

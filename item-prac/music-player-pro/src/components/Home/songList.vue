@@ -2,17 +2,18 @@
   <div class="template" :class="apiType">
     <div class="title">{{ templateTitle }}</div>
     <div class="songList">
-      <div
-        class="songListItem"
-        v-for="(item,index) in songListData"
-        :key="index"
-      >{{index+1}}. {{item.data.songname}} -- {{item.data.singer[0].name}}</div>
+      <div class="songListItem" v-for="(item,index) in songListData" :key="index">
+        <router-link
+          :to="{path: '/detail'}"
+        >{{index+1}}. {{item.data.songname}} -- {{item.data.singer[0].name}}</router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import $ from "jquery";
+import axios from "axios";
 
 export default {
   data() {
@@ -35,6 +36,11 @@ export default {
     },
     getApiData(apiType, successFn, errorFn) {
       const url = this.getApiType(apiType);
+      // axios
+      //   .get(
+      //     "https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8%C2%ACice=0&platform=h5&needNewCode=1&tpl=3&page=detail&type=top&topid=27&_=1519963122923"
+      //   )
+      //   .then(successFn);
       url &&
         $.ajax({
           url: url,
@@ -59,6 +65,12 @@ export default {
   },
   created: function() {
     this.getApiData(this.apiType, this.getList);
+  },
+  watch: {
+    $route(to, from) {
+      console.log(to)
+      this.$router.push({ path: to.path });
+    }
   }
 };
 </script>
