@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="../../modules/jquery/jquery.js"></script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="left_content">
+        <div class="title">
+          <ul id="menuList"></ul>
+        </div>
+      </div>
+      <div class="right_content">
+        <div class="contoiner">
+          <div class="message">
+            <img src="./images/wifi-icon.png" alt="" class="wi-fi" />
+            <div class="date">07.14</div>
+            <div class="week">WEN</div>
+            <div class="time">12:30</div>
+          </div>
+          <div class="r_title">
+            <span class="apps">APPS</span>
+            <span class="sports">Sports</span>
+          </div>
+          <div class="r_content" id="r_content"></div>
+          <div class="choose_color"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 定义一个变量，用来存放接口拿到的数据
+    var myData = null;
+    $.ajax({
+      async: true,
+      type: "get",
+      url: "http://dev-smarttv.zeasn.tv/BluePortServlets/launcher/menuApp",
+      data: {
+        productid: "329",
+        spproductid: "329",
+        brandid: "8",
+        categoryid: "c6d19f5dc47611e7936b06bc92f2b7c5",
+        osver: "0.6.0",
+        ostype: "linux"
+      },
+      datatype: "jsonp",
+      success: function(res) {
+        myData = res.datas; // 现在myData里面存放的就是我们需要的数据了
+        // 不信你看看控制台的输出
+        console.log(myData);
+        innerTitle(myData);
+        handleRightContent();
+        // 逻辑顺序如下
+        // 先渲染菜单innerTitle() => 后执行处理右边内容的方法handleRightContent() => 最后渲染右侧内容innerBox()
+      },
+      error: function() {
+        alert("错误");
+      }
+    });
+
+   
+    // 第一步：输出菜单方法
+    function innerTitle(data) {
+      // 我们
+      var menuList = document.getElementById("menuList");
+      var menuStr = "";
+      // 具体循环几次，是不是根据data的长度来定？有7个menu就循环7次
+      for (var i = 0; i < data.length; i++) {
+        // data的结构请看console.log输出
+        // 现在我们只要把第i个data的数据拿出来就好
+        // 比如循环第一次的时候，是data[0]，这时候的标题就是data[0].title
+        // 我们再按照UI图里的需求，将title转换成大写的，===> toUpperCase()
+        // 我们把当前的i通过data-index的形式存到对应的DOM元素里面，以便等下取对应的右侧数据
+        // tabindex的作用在于，让这个dom元素变成和input一样的可以聚焦的元素（我时间不够，方便这样写，日常PC开发还是要用class来控制哈）
+        menuStr += `
+        <li data-index="${i}" class="menuItem" tabindex="-1">${data[i].title.toUpperCase()}</li>`;
+      }
+      menuList.innerHTML = menuStr;
+    }
+
+    // 第二步：处理右侧内容
+    function handleRightContent() {
+      // 用原生js写太浪费时间了，我接下来用jquery写
+      var $menuItems = $(".menuItem");
+      $menuItems[0].focus();
+      innerBox(0); // 默认聚焦在第0个
+      $menuItems.focus(function() {
+        var index = $(this).attr("data-index"); // 这个东西是我们刚才写上去的哦~~
+        innerBox(index);
+      });
+    }
+  
+  
+     // 第三步：输出内容盒子方法
+     function innerBox(index) {
+      // 左边我们点第几个，右边就要显示第几个的相应内容，所以我们需要这个index
+      var thisBoxData = myData[index].datas; // 这个就是我们需要的内容了。
+      var content_box = document.getElementById("r_content");
+      var totalHTML = '';
+      for (var i = 0; i < thisBoxData.length; i++) {
+        // 和渲染菜单同理
+        // 这时候，图片用我们接口拿下来的：thumbnail字段
+        // 标题用title字段
+        totalHTML += `<div class="content_box">
+              <div class="default"><img src="${thisBoxData[i].thumbnail}" alt="" /></div>
+              <div class="content_title">
+                ${thisBoxData[i].title}
+              </div>
+            </div>`;
+      }
+      content_box.innerHTML = totalHTML;
+    }
+
+  </script>
+</html>

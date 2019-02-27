@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  width: 1280px;
+  height: 720px;
+  .left_content {
+    background-color: #191919;
+    width: 180px;
+    height: 720px;
+    float: left;
+    .title {
+      padding-top: 180px;
+      ul {
+        list-style: none;
+        margin: 0 auto;
+        li {
+          // padding-left放在这里比较好，不然你等下设置背景颜色的时候不是完整的
+          padding-left: 50px;
+          height: 48px;
+          line-height: 48px;
+          color: #c3c3c3;
+          font-size: 24px;
+          text-align: left;
+          // 超出部分省略号的写法
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &:focus {
+            background: rgb(69, 69, 247);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  .right_content {
+    background-color: #101010;
+    width: 1100px;
+    height: 720px;
+    float: left;
+    .contoiner {
+      width: 930px;
+      margin: 0 auto;
+      position: relative;
+      .message {
+        color: #c3c3c3;
+        position: absolute;
+        top: 0;
+        right: 0;
+        .wi-fi {
+          float: left;
+          font-size: 16px;
+          padding-top: 33px;
+        }
+        .date {
+          float: left;
+          margin-left: 10px;
+          padding-top: 26px;
+          font-size: 24px;
+        }
+        .week {
+          float: left;
+          margin-left: 10px;
+          padding-top: 26px;
+          font-size: 24px;
+        }
+        .time {
+          float: left;
+          margin-left: 10px;
+          padding-top: 18px;
+          font-size: 32px;
+        }
+      }
+      .r_title {
+        color: #c3c3c3;
+        padding-top: 74px;
+        span {
+          font-size: 24px;
+        }
+        .sports {
+          margin-left: 20px;
+        }
+      }
+      .r_content {
+        padding-top: 16px;
+        .content_box {
+          width: 180px;
+          height: 136px;
+          float: left;
+          margin-right: 6px;
+          margin-bottom: 6px;
+          .default {
+            width: 180px;
+            height: 104px;
+            background-image: url(./images/default.png);
+            background-size: 100% 100%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .content_title {
+            height: 32px;
+            width: 180px;
+            background-color: #4c4c4c;
+            text-align: left;
+            color: #c3c3c3;
+            font-size: 21px;
+            padding-left: 5px;
+            position: relative;
+            top: 2px;
+            // 超出部分省略号的写法
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
