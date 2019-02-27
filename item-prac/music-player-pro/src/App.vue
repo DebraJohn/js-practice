@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <Home />
+    <Home/>
   </div>
 </template>
 
 <script>
-import Home from './components/Home/index.vue'
+import Home from "./components/Home/index.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Home
+    Home,
   }
-}
+};
 </script>
 
 <style>
@@ -47,12 +47,12 @@ select {
   box-sizing: border-box;
 }
 html,
-body{
+body {
   height: 100%;
   width: 100%;
 }
 body {
-  font-family: 'Microsoft YaHei';
+  font-family: "Microsoft YaHei";
   font-size: 14px;
   color: #333;
 }
@@ -93,7 +93,7 @@ textarea {
   zoom: 1;
 }
 .clearfix:after {
-  content: '.';
+  content: ".";
   width: 0;
   height: 0;
   visibility: hidden;
