@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="../../jquery-3.3.1.min.js"></script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="left_content">
+        <div class="title">
+          <ul>
+            <li>MUSICS</li>
+            <li>GAMES</li>
+            <li>VIDEOS</li>
+            <li>SPORTS</li>
+            <li>NEWS</li>
+            <li>LIFE</li>
+            <li>EDUCATI...</li>
+            <li>BUSNESS</li>
+          </ul>
+        </div>
+      </div>
+      <div class="right_content">
+        <div class="contoiner">
+          <div class="message">
+            <img src="./images/wifi-icon.png" alt="" class="wi-fi" />
+            <div class="date">07.14</div>
+            <div class="week">WEN</div>
+            <div class="time">12:30</div>
+          </div>
+          <div class="r_title">
+            <span class="apps">APPS</span>
+            <span class="sports">Sports</span>
+          </div>
+          <div class="r_content" id="r_content">
+            <div class="content_box">
+              <img src="./images/test.png" alt="" />
+              <div class="content_title">
+                <span>NANAZVakti</span>
+              </div>
+            </div>
+          </div>
+          <div class="choose_color"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $.ajax({
+      async: true,
+      type: 'get',
+      url: 'http://dev-smarttv.zeasn.tv/BluePortServlets/launcher/menuApp',
+      data: {
+        productid: '329',
+        spproductid: '329',
+        brandid: '8',
+        categoryid: 'c6d19f5dc47611e7936b06bc92f2b7c5',
+        osver: '0.6.0',
+        ostype: 'linux'
+      },
+      datatype: 'jsonp',
+      success: function(res) {
+        innerBox();
+      },
+      error: function() {
+        alert('错误');
+      }
+    });
+
+//输出内容盒子方法
+    function innerBox() {
+      var content_box = document.getElementById('r_content');
+      var totalHTML;
+      for (var i = 0; i < 10; i++) {
+        totalHTML += `
+            <div class="content_box">
+              <img src="./images/test.png" alt="">
+              <div class="content_title">
+                <span>NANAZVakti</span>
+              </div>
+            </div>`;
+      }
+      content_box.innerHTML = totalHTML;
+    }
+
+//输出菜单方法
+    function innerTitle() {
+      var
+    }
+  </script>
+</html>
