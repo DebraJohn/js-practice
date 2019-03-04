@@ -13,15 +13,8 @@
     <div class="content">
       <div class="left_content">
         <div class="title">
-          <ul>
-            <li>MUSICS</li>
-            <li>GAMES</li>
-            <li>VIDEOS</li>
-            <li>SPORTS</li>
-            <li>NEWS</li>
-            <li>LIFE</li>
-            <li>EDUCATI...</li>
-            <li>BUSNESS</li>
+          <ul id="menuList">
+
           </ul>
         </div>
       </div>
@@ -38,12 +31,7 @@
             <span class="sports">Sports</span>
           </div>
           <div class="r_content" id="r_content">
-            <div class="content_box">
-              <img src="./images/test.png" alt="" />
-              <div class="content_title">
-                <span>NANAZVakti</span>
-              </div>
-            </div>
+            //右边的内容也是通过接口获取的
           </div>
           <div class="choose_color"></div>
         </div>
@@ -51,6 +39,8 @@
     </div>
   </body>
   <script>
+
+    var myDate = null;//定义一个变量，用来存放接口拿到的数据
     $.ajax({
       async: true,
       type: 'get',
@@ -65,32 +55,57 @@
       },
       datatype: 'jsonp',
       success: function(res) {
-        innerBox();
+        myDate = res.datas;
+        //此时myDate里面就是存放着接口的数据；
+        console.log(myDate);
+        innerTitle(myDate);
+        handleRightContent()
       },
       error: function() {
         alert('错误');
       }
     });
 
-//输出内容盒子方法
-    function innerBox() {
+
+    //1.输出菜单方法
+    function innerTitle(data) {
+
+      var titlelist = document.getElementById('menuList')
+      console.log(titlelist);
+      var totallist = '';
+      for (var i = 0; i < data.length ; i++){
+        totallist += `
+        <li data-index = '${i}' class = 'menuItem' tabindex="-1">${data[i].title.toUpperCase()}</li>`
+      }
+      titlelist.innerHTML = totallist;
+    }
+
+    //2.处理右侧内容
+    function handleRightContent() {
+      var $menuItems = $(".menuItem");
+      $menuItems[0].focus();
+      innerBox(0);//默认聚焦为0
+      $menuItems.focus(function(){
+        var index = $(this).attr("data-index")
+        innerBox(index);//调用innerBox函数，并传入index
+      });
+    }
+
+    //输出内容盒子方法
+    function innerBox(index) {
       var content_box = document.getElementById('r_content');
-      var totalHTML;
-      for (var i = 0; i < 10; i++) {
+      var thisboxData = myDate[index].datas;
+      var totalHTML = '';
+      for (var i = 0; i < thisboxData.length; i++) {
         totalHTML += `
             <div class="content_box">
-              <img src="./images/test.png" alt="">
+              <div class='default'><img src="${thisboxData[i].thumbnail}" alt=""></div>
               <div class="content_title">
-                <span>NANAZVakti</span>
+                <span>${thisboxData[i].title}</span>
               </div>
             </div>`;
       }
       content_box.innerHTML = totalHTML;
-    }
-
-//输出菜单方法
-    function innerTitle() {
-      var
     }
   </script>
 </html>
