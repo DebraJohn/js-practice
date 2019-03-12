@@ -3,9 +3,9 @@
     <div class="title">{{ templateTitle }}</div>
     <div class="songList">
       <div class="songListItem" v-for="(item,index) in songListData" :key="index">
-        <router-link
-          :to="{path: '/detail'}"
-        >{{index+1}}. {{item.data.songname}} -- {{item.data.singer[0].name}}</router-link>
+        <div
+          @click="jumpTo('detail')"
+        >{{index+1}}. {{item.data.songname}} -- {{item.data.singer[0].name}}</div>
       </div>
     </div>
   </div>
@@ -61,16 +61,13 @@ export default {
         default:
           break;
       }
+    },
+    jumpTo(page) {
+      this.$router.push(`/${page}`);
     }
   },
   created: function() {
     this.getApiData(this.apiType, this.getList);
-  },
-  watch: {
-    $route(to, from) {
-      console.log(to)
-      this.$router.push({ path: to.path });
-    }
   }
 };
 </script>
